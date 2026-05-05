@@ -18,11 +18,10 @@ describe("TinyBank", () => {
     ]);
     // signers[0], signers[1], signers[2] 를 manager로 등록 (3명 이상 필수)
         tinyBankC = await hre.ethers.deployContract("TinyBank", [
-            await myTokenC.getAddress(),
-            [signers[0].address, signers[1].address, signers[2].address]
-        ]);
-        await myTokenC.setManager(await tinyBankC.getAddress());
-    })
+      await myTokenC.getAddress(),
+      [signers[0].address, signers[1].address, signers[2].address],
+    ]);
+    await myTokenC.setManager(await tinyBankC.getAddress());
   });
   describe("Initialized state check", () => {
     it("should return totalStaked 0", async () => {
